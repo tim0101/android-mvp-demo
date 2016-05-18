@@ -68,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements IProductView{
         });
         if(iProductPresenter==null){
             iProductPresenter=new IProdcutPresenterImpl(this);
-            iProductPresenter.getPoductList("387",pageNum);
         }
-
+        superRecyclerView.setRefreshing(true);
     }
 
     @Override

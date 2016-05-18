@@ -30,5 +30,6 @@
         app:cpb_min_sweep_angle="10"
         app:cpb_max_sweep_angle="300"
         android:layout_gravity="center"
+        android:visibility="gone"
         />
 </FrameLayout>
