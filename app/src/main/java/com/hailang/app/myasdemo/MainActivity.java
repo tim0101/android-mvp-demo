@@ -1,5 +1,6 @@
 package com.hailang.app.myasdemo;
 
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.hailang.app.myasdemo.adapter.DataBindSimpleAdapter;
 import com.hailang.app.myasdemo.adapter.ProductListAdapter;
 import com.hailang.app.myasdemo.bean.Product;
 import com.hailang.app.myasdemo.presenter.IProdcutPresenterImpl;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements IProductView{
     protected XRecyclerView superRecyclerView;
 
     protected List<Product> productList=new ArrayList<>();
-    protected ProductListAdapter productListAdapter;
+    protected DataBindSimpleAdapter productListAdapter;
     protected int pageNum=1;
 //    private RecyclerView recyclerView;
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements IProductView{
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_product_margin);
         superRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
-        productListAdapter=new ProductListAdapter(this,productList);
+        productListAdapter=new DataBindSimpleAdapter(R.layout.product_list_item, com.hailang.app.myasdemo.BR.product,productList);
         superRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -69,7 +71,12 @@ public class MainActivity extends AppCompatActivity implements IProductView{
         if(iProductPresenter==null){
             iProductPresenter=new IProdcutPresenterImpl(this);
         }
-        superRecyclerView.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                superRecyclerView.setRefreshing(true);
+            }
+        },1000);
     }
 
     @Override
@@ -120,4 +127,5 @@ public class MainActivity extends AppCompatActivity implements IProductView{
             superRecyclerView.loadMoreComplete();
         }
     }
+
 }

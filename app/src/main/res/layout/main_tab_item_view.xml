@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingLeft="3dp"
+    android:paddingBottom="5dp"
+    android:paddingRight="3dp"
+    android:paddingTop="8dp"
+    android:orientation="vertical" >
+<!--     android:background="@drawable/tab_selected_bg" -->
+    
+    <ImageView
+        android:id="@id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_buy_now"
+         />
+    <TextView
+        android:id="@+id/textview"       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="课程"
+        android:textColor="@drawable/mian_tab_text_style"
+        android:textSize="12sp">
+    </TextView>
+</LinearLayout>
