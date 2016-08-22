@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="product"
             type="com.hailang.app.myasdemo.bean.Product"/>
+        <variable
+            name="enventHandler"
+            type="com.hailang.app.myasdemo.MainActivity"/>
     </data>
     <LinearLayout
-        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ll_product_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,10 +17,11 @@
         android:orientation="vertical"
     >
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/igw_product_img"
         android:layout_width="match_parent"
         android:layout_height="160dp"
+        app:imageUrl="@{product.productImgThumb}"
         />
         <TextView
             android:id="@+id/tv_product_name"
@@ -58,6 +60,7 @@
                 android:id="@+id/igw_add_car"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{()->enventHandler.addProduct(product)}"
                 android:src="@drawable/ic_buy_now" />
         </LinearLayout>
     </LinearLayout>

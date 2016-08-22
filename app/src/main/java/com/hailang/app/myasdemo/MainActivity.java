@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements IProductView{
         superRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
         productListAdapter=new DataBindSimpleAdapter(R.layout.product_list_item, com.hailang.app.myasdemo.BR.product,productList);
+        productListAdapter.addEventHandler(BR.enventHandler,this);
         superRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements IProductView{
                 iProductPresenter.getPoductList("387", pageNum);
             }
         });
+
+
         if(iProductPresenter==null){
             iProductPresenter=new IProdcutPresenterImpl(this);
         }
@@ -126,6 +129,10 @@ public class MainActivity extends AppCompatActivity implements IProductView{
         }else{
             superRecyclerView.loadMoreComplete();
         }
+    }
+
+    public void addProduct(Product product){
+        Tools.showInfo(this,product.getTitle());
     }
 
 }

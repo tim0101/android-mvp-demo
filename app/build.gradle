@@ -55,5 +55,7 @@ dependencies {
 //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 //    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile 'com.android.support:design:23+'
+    //picasso图片加载器
+    compile 'com.squareup.picasso:picasso:2.5.2'
 //    compile files('libs/dagger-compiler-1.2.5.jar')
 }
